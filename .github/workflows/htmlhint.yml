@@ -1,21 +1,16 @@
-name: Lint HTML with HTMLHint
+name: Validate HTML
 
 on: [push, pull_request]
 
 jobs:
-  lint:
+  validate-html:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
       - name: Install HTMLHint
         run: npm install -g htmlhint
 
-      - name: Run HTMLHint
+      - name: Validate HTML
         run: htmlhint "**/*.html"
